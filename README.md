@@ -4,6 +4,9 @@ A tool for diagnosing and debugging AWS S3 API signing issues that helps develop
 
 一个用于诊断和调试 AWS S3 API 签名问题的工具，帮助开发者快速定位和解决 S3 API 请求签名相关的问题。
 
+![eric-gitta-moore github io_aws-s3api-sign-diagnoser_](https://github.com/user-attachments/assets/7d7ee1c2-9ffd-4830-a9c7-ca1436125532)
+
+
 ## AWS S3 API Signature V4 Spec.
 [Signature Calculations for the Authorization Header: Transferring Payload in a Single Chunk (AWS Signature Version 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-header-based-auth.html)
 
