@@ -4,6 +4,7 @@ import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/aws-s3api-sign-diagnoser/',
   plugins: [
     react(),
     viteStaticCopy({

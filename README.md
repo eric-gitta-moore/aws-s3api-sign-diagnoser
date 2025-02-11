@@ -21,8 +21,8 @@ A tool for diagnosing and debugging AWS S3 API signing issues that helps develop
 
 ## 环境要求
 
-- Node.js 18.0 或更高版本
-- npm 或 yarn 包管理器
+- Node.js 20.0 或更高版本
+- pnpm 包管理器
 
 ## 快速开始
 
@@ -36,21 +36,24 @@ git clone https://github.com/yourusername/aws-s3api-sign-diagnoser.git
 cd aws-s3api-sign-diagnoser
 
 # 安装依赖
-npm install
+pnpm install
+
+# 生产预览
+pnpm run preview
 ```
 
 ### 开发
 
 ```bash
 # 启动开发服务器
-npm run dev
+pnpm run dev
 ```
 
 ### 构建
 
 ```bash
 # 构建生产版本
-npm run build
+pnpm run build
 ```
 
 ## 使用指南
