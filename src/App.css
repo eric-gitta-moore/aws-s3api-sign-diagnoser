@@ -1,0 +1,54 @@
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+pre {
+  background-color: #f5f5f5;
+  padding: 12px;
+  border-radius: 4px;
+  margin: 8px 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.ant-steps-item-description {
+  max-width: 100% !important;
+}
+
+.canonical-format-quote {
+  border-left: 4px solid #1890ff;
+  background-color: #f8f9fa;
+  padding: 12px 16px;
+  margin: 16px 0;
+  color: #666;
+}
+
+/* .canonical-format-quote pre {
+  background-color: transparent;
+  margin: 8px 0 0;
+  padding: 0;
+} */
+
+.signature-input-success {
+  border-color: #52c41a !important;
+  background-color: #f6ffed !important;
+}
+
+.signature-input-error {
+  border-color: #ff4d4f !important;
+  background-color: #fff2f0 !important;
+}
+
+.signature-input-success:hover,
+.signature-input-success:focus {
+  border-color: #52c41a !important;
+  box-shadow: 0 0 0 2px rgba(82, 196, 26, 0.2) !important;
+}
+
+.signature-input-error:hover,
+.signature-input-error:focus {
+  border-color: #ff4d4f !important;
+  box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.2) !important;
+}
