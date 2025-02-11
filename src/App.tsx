@@ -32,6 +32,7 @@ interface SignatureDetails {
   region: string;
   signedHeaders: string;
   headers: Record<string, string>;
+  authorizationHeader: string;
 }
 
 function App() {
@@ -215,7 +216,7 @@ function App() {
       // 计算最终签名
       const signature = CryptoJS.HmacSHA256(stringToSign, kSigning).toString();
 
-      setSignatureDetails({
+      const sig = {
         canonicalRequest,
         stringToSign,
         dateKey: kDate.toString(),
@@ -229,8 +230,17 @@ function App() {
         dateStamp,
         region,
         signedHeaders: newSignedHeaders,
-        headers
-      });
+        headers,
+        authorizationHeader: ``
+      }
+      setSignatureDetails({
+        ...sig,
+        authorizationHeader: ['AWS4-HMAC-SHA256',
+          `Credential=${sig.accessKeyId}/${sig.dateStamp}/${sig.region}/s3/aws4_request,`,
+          `SignedHeaders=${sig.signedHeaders},`,
+          `Signature=${sig.signature}`,
+        ].join(' ')
+      })
 
     } catch (error) {
       message.error('签名计算过程中出现错误');
@@ -522,17 +532,12 @@ Signature=<Signature>
                     <Text>计算得到的 Authorization 标头：</Text>
                     <Paragraph copyable>
                       <pre>
-                        {`
-AWS4-HMAC-SHA256
-Credential=${signatureDetails.accessKeyId}/${signatureDetails.dateStamp}/${signatureDetails.region}/s3/aws4_request,
-SignedHeaders=${signatureDetails.signedHeaders},
-Signature=${signatureDetails.signature}
-`.trim()}
+                        {(signatureDetails.authorizationHeader).replace(/Credential=|SignedHeaders=|Signature=/ig, match => `\n${match}`).trim()}
                       </pre>
                     </Paragraph>
                     <Text>原始请求中的 Authorization 标头：</Text>
                     <Paragraph copyable>
-                      <pre>
+                      <pre style={{ color: signatureDetails.headers['authorization'].replace('/\s/ig', '') === signatureDetails.authorizationHeader.replace('/\s/ig', '') ? '#52c41a' : '#ff4d4f' }}>
                         {(signatureDetails.headers['authorization'] || '未提供').replace(/Credential=|SignedHeaders=|Signature=/ig, match => `\n${match}`).trim()}
                       </pre>
                     </Paragraph>
