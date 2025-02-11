@@ -108,8 +108,8 @@ function App() {
       }
 
       // 提取 URL 相关信息
-      if (parsedCommand.url) {
-        const url = new URL(parsedCommand.url);
+      if (parsedCommand.raw_url) {
+        const url = new URL(parsedCommand.raw_url);
         endpointUrl = `${url.protocol}//${url.host}`;
         path = url.pathname || '/';
         queryString = url.search.replace(/^\?/, '') || '';
